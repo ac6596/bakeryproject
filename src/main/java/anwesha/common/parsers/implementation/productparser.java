@@ -10,6 +10,8 @@ import static java.util.stream.Collectors.toMap;
 public class productparser implements parser<product> {
 	
 	
+	//csv parser to get raed the product and product code from the .csv
+	
     @Override
     public Map<String, product> parseList(List<String> lines) {
         return lines.stream()
@@ -23,4 +25,3 @@ public class productparser implements parser<product> {
     }
 
 }
-//File Complete

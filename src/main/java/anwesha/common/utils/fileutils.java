@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 
 import static anwesha.common.constants.CSV_READING_ERROR;
 
+//read the csv and throws the readerexception if there is any error
+
 public class fileutils {
 	
 	
@@ -35,4 +37,3 @@ public class fileutils {
 	
 
 }
-//File Complete

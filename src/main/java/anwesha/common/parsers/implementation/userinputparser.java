@@ -11,6 +11,8 @@ import static java.lang.Integer.parseInt;
 import static java.util.stream.Collectors.toMap;
 import static anwesha.common.constants.INVALID_USER_INPUT;
 
+//checks the user input if that is in proper format else throw userinputexception
+
 public class userinputparser implements parser<Integer> {
 	
     public Map<String, Integer> parseList(List<String> lines) {
@@ -24,4 +26,3 @@ public class userinputparser implements parser<Integer> {
     } 
 
 }
-//File Complete

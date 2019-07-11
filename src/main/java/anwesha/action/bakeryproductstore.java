@@ -35,9 +35,13 @@ public class bakeryproductstore {
         return bakeryprdstore;
     }
     
+    //find the ordered product from the input given
+    
     public product findProduct(String productCode) {
         return productMap.get(productCode);
     }
+    
+    //read the csv file productslist.csv provided which is defined in fileutils.java
     
     private void loadProductMap() {
         try {
@@ -48,12 +52,14 @@ public class bakeryproductstore {
         }
     }
 
+    //get the price of each product
+    
     private void loadPriceInProductMap() {
         Map<String, List<productprice>> productPriceMap = getProductPriceMap();
         populatePriceInProductMap(productPriceMap);
     }
     
-
+    //read the csv file productprice.csv
 
     private Map<String, List<productprice>> getProductPriceMap() {
         try {

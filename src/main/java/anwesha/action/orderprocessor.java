@@ -30,6 +30,8 @@ public class orderprocessor {
         this.bakery = bakery;
     }
     
+    //gets the input from user and process the order, if the input is invalid it will throw an error
+    
     public String process(String inputString) {
         if(!EXIT_COMMANDS.contains(inputString.trim())) {
             try {
@@ -46,6 +48,8 @@ public class orderprocessor {
         }
     }
     
+    //calculates the bill based on the order
+    
     private String generateOrderBill(Entry<String, Integer> userInputEntry) {
         final product product = bakeryProductStore.findProduct(userInputEntry.getKey());
 
@@ -57,16 +61,25 @@ public class orderprocessor {
         }
     }
     
+    //calculateBill() function takes the product and no. of items ordered as the arguments
     
     private Map<Integer, Integer> calculateBill(product product, Integer quantity) {
+    	
+    	//output will give you the packsize and how many packsize you need to get the desired no. of items
+    	
         Map<Integer, Integer> output = new HashMap<>();
 
+        //sorted packsize in reverse order for the ordered product
+        
         List<Integer> packSizeList = product.getSortedSupportedPackList();
 
         int q = quantity;
         int start = 0;
         int packSize = 0;
-
+  
+        //the actual algorithm is written here as described in the readme file...if the quantity is greater than zero and the variable
+        //start(the counter) is less than the packsize then proceed with the flow until the remainder is zero
+        
         while (q > 0 && start < packSizeList.size()) {
             if(packSize > 0) {
                 if(packSizeList.indexOf(packSize)+1 == packSizeList.size()) {
@@ -104,9 +117,14 @@ public class orderprocessor {
         return output;
     }
     
+    //printBill prints the total amount need to be paid, takes argument output(explained above), product code, total no. of items required
     
     private String printBill(Map<Integer, Integer> output, product product, Integer quantity) {
         if(output.isEmpty()) {
+        	
+        	//the no. of items should be in a manner that the count(no. of items requested) is matching with the pack sizes
+        	//It will print Invalid Product count if the remainder is not zero
+        	
             return INVALID_INPUT_PRODUCT_COUNT;
         } else {
             StringBuffer outputBuffer = new StringBuffer();
@@ -118,7 +136,11 @@ public class orderprocessor {
                 outputBuffer.append(NEWLINE + TABSPACE + output.get(packSize) + MUL + packSize + CURRENCY
                         + product.getPrice(packSize));
             }
-
+            
+            //prints the output in desired way 
+            //10 VS5 $17.98
+            //2*5 $8.99
+            
             return quantity + SPACE + product + SPACE + CURRENCY + totalOrderValue + outputBuffer.toString();
         }
     }

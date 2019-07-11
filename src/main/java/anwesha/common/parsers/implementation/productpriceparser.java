@@ -13,6 +13,8 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class productpriceparser implements parser<List<productprice>> {
 	
+	//csv parser to get the product code, pack size and corresponding price from the csv file productprice.csv
+	
     @Override
     public Map<String, List<productprice>> parseList(List<String> lines) {
         return lines.stream()
@@ -26,4 +28,3 @@ public class productpriceparser implements parser<List<productprice>> {
     }
 
 }
-//File Complete
