@@ -33,6 +33,6 @@ How to run the jar :
 
 Open terminal in MAC or open cmd in Windows and type below :
 
-java -jar <jar name>
+java -jar (jar name)
 
 Make sure you are running the jar from the target folder (cd to the target folder where the jar resides)
